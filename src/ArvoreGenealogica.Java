@@ -10,7 +10,7 @@ public class ArvoreGenealogica<T> implements Amontoavel {
         quantidade = 0;
         this.tamanho = tamanho;
     }
-
+    
     public ArvoreGenealogica() {
         this(10);
     }

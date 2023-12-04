@@ -1,7 +1,7 @@
 public class App {
     public static void main(String[] args) throws Exception {
         System.out.println("Hello, World!");
-        Amontoavel membro1 = new ArvoreGenealogica<>(10);
+        Amontoavel<Integer> membro1 = new ArvoreGenealogica<>(10);
 
         membro1.inserirFamiliar(1);
         membro1.imprimir();

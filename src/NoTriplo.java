@@ -8,7 +8,7 @@ public class NoTriplo<T> {
         return raiz;
     }
 
-    public void setRaiz() {
+    public void setRaiz(NoTriplo<T> raiz) {
         this.raiz = raiz;
     }
 
@@ -16,7 +16,7 @@ public class NoTriplo<T> {
         return dado;
     }
 
-    public void setDado() {
+    public void setDado(T dado) {
         this.dado = dado;
     }
 
@@ -24,7 +24,7 @@ public class NoTriplo<T> {
         return anterior;
     }
 
-    public void setAnterior() {
+    public void setAnterior(NoTriplo<T> anterior) {
         this.anterior = anterior;
     }
 
@@ -32,7 +32,7 @@ public class NoTriplo<T> {
         return proximo;
     }
 
-    public void setProximo() {
+    public void setProximo(NoTriplo<T> proximo) {
         this.proximo = proximo;
     }
 }
