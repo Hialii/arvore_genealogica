@@ -1,12 +1,15 @@
 public interface Amontoavel<T> {
-   void inserirFamiliar(T dados);
-   void removerFamiliar();
-   T visualizarArvore();
-   T buscarFamiliar();
-   T detalharFamiliar();
-   T verificarFamiliar();
+   void insert(T person);
 
-   String imprimir();
-   boolean estaVazia();
-   boolean estaCheia();
+   // void remove(T person);
+   // List<T> visualization();
+   // T search(String person);
+   // T detail(T person);
+   // T verify(T person);
+
+   String print();
+
+   boolean isEmpty();
+
+   boolean isFull();
 }

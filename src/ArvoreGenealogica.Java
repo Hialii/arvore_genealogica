@@ -1,7 +1,7 @@
-public class ArvoreGenealogica<T> implements Amontoavel {
-    private NoTriplo ponteiroRaiz;
-    private NoTriplo ponteiroFim;
-    private int quantidade.
+public class ArvoreGenealogica<T> implements Amontoavel<T> {
+    private NoTriplo<T> ponteiroRaiz;
+    private NoTriplo<T> ponteiroFim;
+    private int quantidade;
     private int tamanho;
 
     public ArvoreGenealogica(int tamanho) {
@@ -10,18 +10,18 @@ public class ArvoreGenealogica<T> implements Amontoavel {
         quantidade = 0;
         this.tamanho = tamanho;
     }
-    
+
     public ArvoreGenealogica() {
         this(10);
     }
 
-    public void inserirFamiliar(Object dado) {
-        if(!estaCheia()) {
+    public void insert(T dado) {
+        if (!isFull()) {
             NoTriplo<T> novoDado = new NoTriplo<>();
             novoDado.setDado(dado);
 
-            if(!estaVazia()) {
-                NoTriplo<T> noInserido = inserirRecursivo(ponteiroRaiz, novoDado);
+            if (!isEmpty()) {
+                NoTriplo<T> noInserido = insertRecursive(ponteiroRaiz, novoDado);
                 // ajustarAcima(noInserido);
             } else {
                 ponteiroRaiz = novoDado;
@@ -33,28 +33,45 @@ public class ArvoreGenealogica<T> implements Amontoavel {
         }
     }
 
-    public NoTriplo<T> inserirRecursivo(NoTriplo<T> noAtual, NoTriplo<T> novoNo) {
-        if(noAtual.setAnterior() == null) {
+    public NoTriplo<T> insertRecursive(NoTriplo<T> noAtual, NoTriplo<T> novoNo) {
+        if (noAtual.getAnterior() == null) {
             noAtual.setAnterior(novoNo);
             novoNo.setRaiz(noAtual);
             return novoNo;
-        } else if(noAtual.setProximo() == null){
+        } else if (noAtual.getProximo() == null) {
             noAtual.setProximo(novoNo);
             novoNo.setRaiz(noAtual);
             return novoNo;
         } else {
-            if(Math.Radom() < 0.5) {
-                return inserirRecursivo(noAtual.getAnterior(), novoNo);
+            if (Math.random() < 0.5) {
+                return insertRecursive(noAtual.getAnterior(), novoNo);
             } else {
-                return inserirRecursivo(noAtual.getProximo(), novoNo);
+                return insertRecursive(noAtual.getProximo(), novoNo);
             }
         }
     }
 
-    public String imprimir() {
-        String resultado = "";
-        resultado += inserirRecursivo(ponteiroRaiz);
-        return resultado;
+    @Override
+    public boolean isFull() {
+        return (quantidade == tamanho);
     }
 
-}   
+    @Override
+    public boolean isEmpty() {
+        return (quantidade == 0);
+    }
+
+    public String print() {
+        StringBuilder resultado = new StringBuilder();
+        printRecursive(ponteiroRaiz, resultado);
+        return resultado.toString();
+    }
+
+    private void printRecursive(NoTriplo<T> noAtual, StringBuilder resultado) {
+        if (noAtual != null) {
+            resultado.append(noAtual.getDado()).append(" ");
+            printRecursive(noAtual.getAnterior(), resultado);
+            printRecursive(noAtual.getProximo(), resultado);
+        }
+    }
+}

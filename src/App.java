@@ -1,10 +1,15 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
-        Amontoavel<Integer> membro1 = new ArvoreGenealogica<>(10);
+        Amontoavel<Integer> arvore = new ArvoreGenealogica<>(10);
 
-        membro1.inserirFamiliar(1);
-        membro1.imprimir();
+        arvore.insert(21);
+        arvore.insert(22);
+        arvore.insert(13);
+        arvore.insert(12);
+        arvore.insert(64);
+        arvore.insert(7);
+        System.out.println(arvore.print());
+
     }
 }
 
