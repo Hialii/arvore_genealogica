@@ -1,11 +1,13 @@
-public interface Automontavel<T> {
+public interface Amontoavel<T> {
    void inserirFamiliar(T dados);
-   T extrairFamiliar();
-   T obterFamiliar();
+   T vizualizarArvore();
+   T buscarFamiliar();
+   T detalharFamiliar();
    void removerFamiliar();
 
-
+  
    String imprimir();
+    String verificar();
    boolean estazazia();
    boolean estaCheia();
 
